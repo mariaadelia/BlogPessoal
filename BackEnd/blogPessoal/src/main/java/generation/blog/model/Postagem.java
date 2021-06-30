@@ -32,9 +32,22 @@ public class Postagem {
 	@Size(min = 5, max = 50, message = "O número mínimo de caracteres é 5 e o número máximo é 50")
 	private String titulo;
 	
+	//Relacionamento com postagem
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
+		
+	//
+		
+	
+	//Relacionamento com tema
+	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
+	
+	//
+	
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
@@ -62,17 +75,24 @@ public class Postagem {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public Date getData() {
-		return data;
+	
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setData(Date data) {
-		this.data = data;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	public Tema getTema() {
 		return tema;
 	}
 	public void setTema(Tema tema) {
 		this.tema = tema;
+	}
+	public Date getData() {
+		return data;
+	}
+	public void setData(Date data) {
+		this.data = data;
 	}
 	public int getCurtir() {
 		return curtir;
